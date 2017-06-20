@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" ng-app>
+  <head>
+	<meta charset="UTF-8">
+    <title>Login Page</title>
+    <style>
+    input.ng-invalid.ng-touched.ng-dirty{border:1px solid red;}   <!--'input' reqd. if we want invalid to run on only input tags; otherwise it runs on the whole Form -->
+    </style>
+  </head>
+  <body>
+	<form name="frm" ng-submit="">
+		<div>
+		Email: <input type="email" name="email" placeholder="email here" ng-model="user.email" ng-required="true">
+		<!--  <span ng-show="frm.email.$dirty && frm.email.$error.required">Required!</span>
+		<span ng-show="frm.email.$dirty && frm.email.$error.email">Not an email!</span>   -->
+		</div>
+		<div ng-show="frm.email.$touched && frm.email.$invalid">
+		<small style="color: red, display: block, text-align"
+		</div>
+		
+		<div>
+		Password: <input type="password" name="password" placeholder="password here" ng-model="user.password" ng-minlength="5" ng-maxlength="10" ng-required="true">
+		<span ng-show="frm.password.$dirty && frm.password.$error.required">Required!</span>
+		<span ng-show="frm.password.$dirty && frm.password.$error.minlength">Too short!</span>
+		<span ng-show="frm.password.$dirty && frm.password.$error.maxlength">Too long!</span>
+		</div>
+		<button ng-disabled="frm.$invalid">Log On</button>
+	</form>  <!--4 forms of Form- pristine dirty valid invalid -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+  </body>
+  <!--<span>
+		$pristine = {{frm.email.$pristine}},
+		$dirty = {{frm.email.$dirty}},
+		$touched = {{frm.email.$touched}},
+		$untouched = {{frm.email.$untouched}},
+		$valid = {{frm.email.$valid}},
+		$invalid = {{frm.email.$invalid}},
+		text = {{frm.email.text}},
+		frm.input.$valid = {{frm.email.$valid}},
+		frm.input.$error = {{frm.email.$error}},
+		frm.$valid = {{frm.$valid}},
+		frm.$error.required = {{!!frm.$error.required}},
+		frm.$error.email = {{!!frm.$error.email}}
+		</span>-->
+  
+</html>
